@@ -1,0 +1,43 @@
+﻿<Properties StartupConfiguration="{8151FDA9-D95C-410F-914B-05E8889A1A19}|http">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pages/Stored.razor">
+    <Files>
+      <File FileName="Models/Stored.cs" Line="10" Column="24" />
+      <File FileName="Data/storedConnections.cs" Line="46" Column="18" />
+      <File FileName="Pages/Index.razor" Line="67" Column="1" />
+      <File FileName="Pages/Stored.razor" Line="30" Column="52" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="Data/custConnectoins.cs" Line="94" Column="14" />
+      <File FileName="Shared/NavMenu.razor" Line="1" Column="1" />
+      <File FileName="Data/MasterService.cs" Line="44" Column="47" />
+      <File FileName="Pages/StoredCreate.razor" Line="75" Column="46" />
+      <File FileName="Pages/CustomerCreate.razor" Line="10" Column="60" />
+      <File FileName="Models/Items.cs" />
+      <File FileName="Models/mySQLSqlHelper.cs" Line="1" Column="1" />
+      <File FileName="appsettings.json" Line="3" Column="117" />
+      <File FileName="App.razor" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TrustBoxes" expanded="True">
+            <Node name="TrustBoxes" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Stored.razor" selected="True" />
+              </Node>
+              <Node name="Shared" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.TrustBoxes PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

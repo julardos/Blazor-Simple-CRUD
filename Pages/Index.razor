@@ -1,0 +1,83 @@
+﻿@page "/"
+@using TrustBoxes.Models
+@using TrustBoxes.Data
+@inject NavigationManager NavigationManager
+@inject MasterService masterService
+<h1>Customer Details</h1>
+<table>
+    <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
+        <td colspan="5" align="left">
+            Search Customer
+        </td>
+    </tr>
+    <tr>
+        <td>Customer Name:</td>
+        <td>
+            <input class="input-group-text" type="text" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-primary" value="Search" @onclick="@searchDetails" />
+        </td>
+    </tr>
+</table>
+<a class="btn btn-success" href="customer/create">Create Customer</a>
+<hr />
+@if (custDetails == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Phone No</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cuDetails in custDetails)
+            {
+                <tr>
+                    <td>@cuDetails.id</td>
+                    <td>@cuDetails.name</td>
+                    <td>@cuDetails.email</td>
+                    <td>@cuDetails.phone</td>
+                    <td>
+                        <a href="/customer/edit/@cuDetails.id" class="btn btn-sm btn-primary">Edit</a>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    String name = "";
+    String email = "";
+    private TrustBoxes.Models.Customer[]? custDetails;
+    protected override async Task OnInitializedAsync()
+    {
+        custDetails = await masterService.GetCustDetails(name, email);
+    }
+    //SearchCustomer
+    async Task searchDetails()
+    {
+        custDetails = await masterService.GetCustDetails(name, email);
+    }
+
+    async Task Delete(int id)
+    {
+        bool status = false;
+        status = await masterService.DeleteCustomer(id);
+        if (status)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+}
+

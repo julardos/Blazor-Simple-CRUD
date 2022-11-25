@@ -1,0 +1,53 @@
+﻿@page "/Stored"
+@using TrustBoxes.Models
+@using TrustBoxes.Data
+@inject MasterService masterService
+<h1>Stored Details</h1>
+
+@if (storeds == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <a class="btn btn-success" href="stored/create">Store Item</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                @*<th>Customer Name</th>*@
+                <th>Stored At</th>
+                @*<th>Status</th>*@
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stored in storeds.Select((value, i) => new { i, value }))
+             {
+                <tr>
+                    <td>@stored.i</td>
+                    @*<td>@stored.value.customer.name</td>*@
+                    <td>@stored.value.start_at</td>
+                    @*<td>@stored.status.name</td>*@
+                    <td>
+                        <button class="btn btn-sm btn-primary">Ubah Status</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private TrustBoxes.Models.Stored[]? storeds;
+    protected override async Task OnInitializedAsync()
+    {
+        storeds = await masterService.GetStoreds();
+    }
+    //SearchCustomer
+    async Task searchDetails()
+    {
+        storeds = await masterService.GetStoreds();
+    }
+}

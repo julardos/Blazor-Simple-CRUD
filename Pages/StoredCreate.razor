@@ -1,0 +1,78 @@
+﻿@page "/stored/create"
+@using TrustBoxes.Models
+@using TrustBoxes.Data
+@*@inject HttpClient Http*@
+@inject NavigationManager NavigationManager
+@inject MasterService masterService
+<h3>Rent Locker Form</h3>
+
+<EditForm Model="@stored" OnValidSubmit="CreateStored">
+    <div class="mb-3">
+        <label for="customer" class="form-label">Customer</label>
+        <div class="col-md-4">
+            <InputSelect class="form-control" DisplayName="Choose Customer" @bind-Value="stored.customer_id">
+                <option value="0">Choose Customer</option>
+                @foreach (var customer in customers) 
+                {
+                    <option value="@customer.id">@customer.name</option>
+                }
+            </InputSelect>
+        </div>
+        <ValidationMessage For="@(() => stored.customer_id)" />
+    </div>
+    <div class="mb-3">
+        <label for="item" class="form-label">Items</label>
+        <div class="col-md-4">
+            <InputSelect class="form-control" multiple="true" @bind-Value="stored.item_id">
+                <option value="0">Choose Items</option>
+                @foreach (var item in items)
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            </InputSelect>
+        </div>
+        <ValidationMessage For="@(() => stored.item_id)" />
+    </div>
+    <div class="mb-3">
+        <label for="Name" class="form-label">Start At</label>
+        <div class="col-md-4">
+            <InputDate class="form-control" @bind-Value="stored.start_at" />
+        </div>
+        <ValidationMessage For="@(() => stored.start_at)" />
+    </div>
+    <div class="mb-3">
+        <label for="Cellnumber" class="form-label">End At</label>
+        <div class="col-md-4">
+            <InputDate class="form-control" @bind-Value="stored.end_at" />
+        </div>
+        <ValidationMessage For="@(() => stored.end_at)" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+    </div>
+</EditForm>
+
+@code {
+    protected TrustBoxes.Models.Stored stored = new();
+    private TrustBoxes.Models.Customer[]? customers;
+    private TrustBoxes.Models.Items[]? items;
+    protected override async Task OnInitializedAsync()
+    {
+        customers = await masterService.GetCustDetails(null, null);
+        items = await masterService.GetItems();
+        stored.start_at = new DateOnly(2022, 11, 25);
+        stored.end_at = new DateOnly(2022, 11, 25);
+    }
+    protected async Task CreateStored()
+    {
+        await masterService.CreateStored(stored);
+        Cancel();
+    }
+
+    public void Cancel()
+    {
+        NavigationManager.NavigateTo("/stored");
+    }
+}
+

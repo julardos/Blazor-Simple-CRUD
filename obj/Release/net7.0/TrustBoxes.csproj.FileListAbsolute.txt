@@ -1,0 +1,8 @@
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.csproj.AssemblyReference.cache
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.GeneratedMSBuildEditorConfig.editorconfig
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.AssemblyInfoInputs.cache
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.AssemblyInfo.cs
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.csproj.CoreCompileInputs.cache
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.MvcApplicationPartsAssemblyInfo.cache
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.RazorAssemblyInfo.cache
+/Users/julardos/Projects/TrustBoxes/obj/Release/net7.0/TrustBoxes.RazorAssemblyInfo.cs
